@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool divisorGame(int n) 
+    {
+        int alice=0,bob=0;
+        bool wins=false;
+        for(int i=1;i<n;++i)
+        {
+            if(n%i==0 && wins==true)
+            {
+                bob=1;
+                wins=false;
+                alice=0;
+            }
+            else if(n%i==0 && wins==false)
+            {
+                alice=1;
+                wins=true;
+                bob=0;
+            }
+            if(n%i==0)
+            {
+                n=n-i;
+                i=0;
+            }
+        }
+        if(alice==1)
+            return true;
+        else
+            return false;
+    }
+};

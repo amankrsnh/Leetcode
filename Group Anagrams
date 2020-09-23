@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) 
+    {
+        vector<vector<string>> sol;
+        string s;
+        vector<string> strs1;
+        vector<string> strs2;
+        for(int i=0;i<strs.size();++i)
+        {
+            s=strs[i];
+            sort(s.begin(),s.end());
+            strs1.push_back(s);
+        }
+        unordered_map<string, vector<int>> map;
+	    for (int i = 0; i < strs.size(); i++)
+		    map[strs1[i]].push_back(i);
+        for (auto itr : map)
+	    {
+		for (int index : itr.second)
+        {
+            strs2.push_back(strs[index]);
+        }
+		    sol.push_back(strs2);
+            strs2.clear();
+	    }
+        return sol;
+    }
+};
